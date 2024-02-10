@@ -19,6 +19,16 @@ jobs:
     - name: deployment
       run: echo "Deployment has been completed"
 
+  create-release:
+    runs-on: ubuntu-latest
+    needs: sit-build-and-deploy
+    if: startsWith(github.ref, 'refs/heads/develop')
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Release create
+      run: echo "Release has been completed"
+
   uat-build-and-deploy:
     runs-on: ubuntu-latest
     needs: sit-build-and-deploy
