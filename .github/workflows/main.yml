@@ -21,7 +21,6 @@ jobs:
 
 uat-build-and-deploy:
   runs-on: ubuntu-latest
-  if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/') || startsWith(github.ref, 'refs/heads/feature/')
   steps:
   - name: Checkout code
     uses: actions/checkout@v2
@@ -32,7 +31,6 @@ uat-build-and-deploy:
 
 prd-build-and-deploy:
   runs-on: ubuntu-latest
-  if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/') || startsWith(github.ref, 'refs/heads/feature/')
   steps:
   - name: Checkout code
     uses: actions/checkout@v2
