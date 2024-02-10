@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - develop
-      - hotfix/**
-      - feature/**'
+      - 'hotfix/**'
+      - 'feature/**'
 
 jobs:
   sit-build-and-deploy:
