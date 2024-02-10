@@ -7,7 +7,7 @@ on:
       - 'feature/*'
 
 jobs:
-  sit-build-deploy:
+  sit-build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
