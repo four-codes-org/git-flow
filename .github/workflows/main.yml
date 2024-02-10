@@ -19,22 +19,24 @@ jobs:
     - name: deployment
       run: echo "Deployment has been completed"
 
-uat-build-and-deploy:
-  runs-on: ubuntu-latest
-  steps:
-  - name: Checkout code
-    uses: actions/checkout@v2
-  - name: build
-    run: echo "user-acceptance-testing Build has been completed"
-  - name: deployment
-    run: echo "user-acceptance-testing deployment has been completed"
+  uat-build-and-deploy:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/') || startsWith(github.ref, 'refs/heads/feature/')
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: build
+      run: echo "user-acceptance-testing Build has been completed"
+    - name: deployment
+      run: echo "user-acceptance-testing deployment has been completed"
 
-prd-build-and-deploy:
-  runs-on: ubuntu-latest
-  steps:
-  - name: Checkout code
-    uses: actions/checkout@v2
-  - name: build
-    run: echo "production build has been completed"
-  - name: deployment
-    run: echo "Production deployment has been completed"
+  prd-build-and-deploy:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/') || startsWith(github.ref, 'refs/heads/feature/')
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: build
+      run: echo "production build has been completed"
+    - name: deployment
+      run: echo "Production deployment has been completed"
