@@ -1,0 +1,18 @@
+---
+name: CI
+
+on:
+  push:
+    branches:
+      - feature
+
+jobs:
+  sit-build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: build
+      run: echo "Build has been completed"
+    - name: deployment
+      run: echo "Deployment has been completed"
