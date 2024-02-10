@@ -1,12 +1,13 @@
 ---
-name: gitflow-build-and-deploy
+name: git-flow-build-and-deploy
 
 on:
   push:
     branches:
-      - develop
+      - 'develop'
       - 'hotfix/**'
       - 'feature/**'
+      - 'release/**'
 
 jobs:
   sit-build-and-deploy:
