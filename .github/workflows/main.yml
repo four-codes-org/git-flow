@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: build
       run: echo "Build has been completed"
     - name: deployment
@@ -25,7 +25,7 @@ jobs:
     if: startsWith(github.ref, 'refs/heads/develop')
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Release create
       run: echo "Release has been completed"
 
@@ -35,7 +35,7 @@ jobs:
     if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/')
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: build
       run: echo "user-acceptance-testing Build has been completed"
     - name: deployment
@@ -47,7 +47,7 @@ jobs:
     if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/')
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: build
       run: echo "production build has been completed"
     - name: deployment
