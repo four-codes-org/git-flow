@@ -1,5 +1,5 @@
 ---
-name: gitflow-build-and-deploy
+name: git-flow-build-and-deploy
 
 on:
   push:
