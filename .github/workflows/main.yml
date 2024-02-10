@@ -1,10 +1,10 @@
 ---
-name: CI
+name: sit-build-and-deploy
 
 on:
   push:
     branches:
-      - feature
+      - 'feature/*'
 
 jobs:
   sit-build-deploy:
