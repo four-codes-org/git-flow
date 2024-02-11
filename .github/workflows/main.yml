@@ -4,7 +4,7 @@ name: gitflow-build-and-deploy
 on:
   push:
     branches:
-      - develop
+      - 'develop'
       - 'hotfix/**'
       - 'feature/**'
 
