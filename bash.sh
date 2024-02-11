@@ -1,30 +1,12 @@
-increment_version() {
-    local RELEASE_ORDER="$1"
-    local VERSION="$2"
-    local SEGMENT="$3"
+GITHUB_REPOSITORY="four-codes-org/git-flow"
+GIT_TOKEN="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"
+GIT_API_VERSION="2022-11-28"
 
-    IFS='.' read -r -a parts <<< "$VERSION"
+curl -L \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer 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" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  "https://api.github.com/repos/${GITHUB_REPOSITORY}/branches" | jq -r '.[] | select(.name | contains("release") | not)'
 
-    if [ "$SEGMENT" == "middle" ]; then
-        ((parts[1]++))
-    elif [ "$SEGMENT" == "last" ]; then
-        ((parts[2]++))
-    else
-        echo "Invalid SEGMENT. Please use 'middle' or 'last'."
-        exit 1
-    fi
 
-    NEW_VERSION="${RELEASE_ORDER}.${parts[1]}.${parts[2]}"
-    echo "${NEW_VERSION}"
-    }
-
-    # if [[ "${CI_COMMIT_BRANCH}" == "develop" ]]; then
-    #     VERSION_INCREMENT="middle"
-    # else
-    #     VERSION_INCREMENT="last"
-    # fi
-    RELEASE_ORDER=2
-    LAST_RELEASE_BRANCH_NAME="1.9.0"
-    VERSION_INCREMENT="middle"
-    RELEASE_VERSION=$(increment_version "${RELEASE_ORDER}" "${LAST_RELEASE_BRANCH_NAME}" "${VERSION_INCREMENT}")
-    echo "${RELEASE_VERSION}"
+curl -L -s -H "Accept: application/vnd.github+json"   -H "Authorization: Bearer ${GIT_TOKEN}"   -H "X-GitHub-Api-Version: ${GIT_API_VERSION}"   "https://api.github.com/repos/${GITHUB_REPOSITORY}/branches" | jq -r '[.[] | select(.name | startswith("release/") and match("^release/([0-9]+\\.){2}[0-9]+$"))] | max_by(.name | split("/")[1] | split(".") | map(tonumber)) | .name | split("/")[1]'
