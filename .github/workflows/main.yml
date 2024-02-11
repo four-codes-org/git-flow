@@ -18,6 +18,8 @@ jobs:
       run: echo "Build has been completed"
     - name: deployment
       run: echo "Deployment has been completed"
+    - name: print env
+      run: env
 
   create-release:
     runs-on: ubuntu-latest
