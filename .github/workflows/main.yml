@@ -63,7 +63,7 @@ jobs:
           echo "NEW RELEASE VERSION is: ${RELEASE_VERSION}"
         env:
           RELEASE_ORDER: 1
-          LAST_RELEASE_BRANCH_NAME: 1.0.0
+          LAST_RELEASE_BRANCH_NAME: 1.2.0
 
   uat-build-and-deploy:
     runs-on: ubuntu-latest
