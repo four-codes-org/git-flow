@@ -32,7 +32,6 @@ jobs:
             local RELEASE_ORDER="$1"
             local VERSION="$2"
             local SEGMENT="$3"
-            local NEW_VERSION
 
             IFS='.' read -r -a parts <<< "$VERSION"
             if [ "$SEGMENT" == "middle" ]; then
@@ -59,7 +58,6 @@ jobs:
 
           RELEASE_VERSION=$(increment_version "${RELEASE_ORDER}" "${LAST_RELEASE_BRANCH_NAME}" "${VERSION_INCREMENT}")
           echo "NEW RELEASE VERSION is: ${RELEASE_VERSION}"
-          env
         env:
           RELEASE_ORDER: 1
           LAST_RELEASE_BRANCH_NAME: 1.0.0
