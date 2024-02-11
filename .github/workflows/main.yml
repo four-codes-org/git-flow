@@ -59,7 +59,11 @@ jobs:
           fi
           LAST_RELEASE_BRANCH_NAME=$(curl -L -s -H "Accept: application/vnd.github+json"   -H "Authorization: Bearer ${GIT_TOKEN}"   -H "X-GitHub-Api-Version: ${GIT_API_VERSION}"   "https://api.github.com/repos/${GITHUB_REPOSITORY}/branches" | jq -r '[.[] | select(.name | startswith("release/") and match("^release/([0-9]+\\.){2}[0-9]+$"))] | max_by(.name | split("/")[1] | split(".") | map(tonumber)) | .name | split("/")[1]')
           RELEASE_VERSION=$(increment_version "${RELEASE_ORDER}" "${LAST_RELEASE_BRANCH_NAME}" "${VERSION_INCREMENT}")
-          echo "NEW RELEASE VERSION is: ${RELEASE_VERSION}"
+          echo "RELEASE VERSION is: ${RELEASE_VERSION}"
+          NEW_BRANCH_NAME="release/${RELEASE_VERSION}"
+
+          echo "NEW RELEASE VERSION is: ${NEW_BRANCH_NAME}"
+          BASE_BRANCH="develop"
         env:
           RELEASE_ORDER: 1
           GIT_TOKEN: ${{ secrets.ORG_GIT_TOKEN }}
